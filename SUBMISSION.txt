@@ -1,0 +1,15 @@
+Submission for Carbon Footprint Calculator & Tracker
+
+Name: [Your Name]
+Repository Link: https://github.com/EMananq/1_Planet_Sustech
+Video Demo: [Link to Video Demo]
+
+Description:
+A full-stack web application (React + Node.js + Firebase) that tracks carbon emissions and uses Google Gemini AI to provide personalized reduction tips.
+
+Features Implemented:
+1. User Authentication (JWT)
+2. Activity Logging (Transport, Energy, Food)
+3. Visual Dashboard (Recharts)
+4. AI Recommendations (Google Gemini)
+5. Responsive Design
