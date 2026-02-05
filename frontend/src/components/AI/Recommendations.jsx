@@ -465,7 +465,7 @@ const Recommendations = () => {
         }
         
         .chat-message.assistant .message-content {
-          background: #f1f5f9;
+          background: #f5f0e6;
           color: var(--text-primary);
           border-bottom-left-radius: 4px;
         }
@@ -502,8 +502,8 @@ const Recommendations = () => {
         .chat-input {
           flex: 1;
           padding: 0.875rem 1.25rem;
-          background: #f8fafc;
-          border: 1px solid var(--border-color);
+          background: #faf8f3;
+          border: 1px solid #d7ccc8;
           border-radius: 25px;
           color: var(--text-primary);
           font-size: 0.95rem;
@@ -517,7 +517,7 @@ const Recommendations = () => {
         .chat-send-btn {
           width: 48px;
           height: 48px;
-          background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+          background: linear-gradient(135deg, #2d5a27 0%, #4a7c43 100%);
           border: none;
           border-radius: 50%;
           color: white;

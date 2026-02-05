@@ -35,11 +35,11 @@ const EmissionChart = ({ data }) => {
         <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="colorEmission" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-              <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#2d5a27" stopOpacity={0.4}/>
+              <stop offset="95%" stopColor="#2d5a27" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#d7ccc8" />
           <XAxis 
             dataKey="date" 
             tickFormatter={formatDate}
@@ -59,7 +59,7 @@ const EmissionChart = ({ data }) => {
           <Area 
             type="monotone" 
             dataKey="total" 
-            stroke="#10b981" 
+            stroke="#2d5a27" 
             strokeWidth={2}
             fillOpacity={1} 
             fill="url(#colorEmission)" 
@@ -83,11 +83,11 @@ const EmissionChart = ({ data }) => {
         }
         
         .chart-tooltip {
-          background: white;
-          border: 1px solid #e2e8f0;
+          background: #faf8f3;
+          border: 1px solid #d7ccc8;
           border-radius: 8px;
           padding: 0.75rem 1rem;
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(93, 64, 55, 0.15);
         }
         
         .tooltip-date {
