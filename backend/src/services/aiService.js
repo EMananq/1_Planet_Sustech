@@ -5,7 +5,7 @@ const axios = require('axios');
  * Uses Google Gemini API for intelligent suggestions
  */
 
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 /**
  * Generate personalized recommendations based on user's emission data
