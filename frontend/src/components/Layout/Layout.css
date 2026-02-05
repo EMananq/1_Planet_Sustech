@@ -1,20 +1,17 @@
-/* ============================================
-   NAVBAR - Minimalist Modern
-   ============================================ */
-
 .navbar {
-  background: var(--bg-card);
+  background: white;
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
-  height: 64px;
+  padding: 0 2rem;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,15 +20,16 @@
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.75rem;
   text-decoration: none;
+  color: var(--text-primary);
 }
 
 .logo-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-radius: var(--radius-md);
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,78 +37,73 @@
 }
 
 .logo-text {
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: 2rem;
 }
 
 .nav-links {
   display: flex;
-  gap: var(--space-xs);
+  gap: 0.5rem;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: 0.5rem 1rem;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-secondary);
   text-decoration: none;
-  border-radius: var(--radius-full);
+  border-radius: var(--border-radius);
   transition: all var(--transition-fast);
+  font-weight: 500;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
-  background: var(--gray-100);
+  background: var(--bg-card-hover);
 }
 
 .nav-link.active {
   color: var(--primary);
-  background: rgba(13, 148, 136, 0.1);
+  background: rgba(22, 163, 74, 0.1);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 1.5rem;
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.75rem;
 }
 
 .user-avatar {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.8rem;
   color: white;
+  font-size: 0.9rem;
 }
 
 .user-name {
+  color: var(--text-secondary);
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -119,7 +112,7 @@
 
 .btn-logout {
   padding: 0.5rem 1rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 .mobile-menu-btn {
@@ -128,12 +121,12 @@
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  padding: var(--space-sm);
+  padding: 0.5rem;
 }
 
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0 var(--space-md);
+    padding: 0 1rem;
   }
   
   .mobile-menu-btn {
@@ -144,18 +137,17 @@
   
   .navbar-menu {
     position: fixed;
-    top: 64px;
+    top: 70px;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg-card);
+    background: white;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-md);
-    padding: var(--space-lg);
+    gap: 1rem;
+    padding: 1.5rem;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    border-top: 1px solid var(--border-color);
   }
   
   .navbar-menu.open {
@@ -167,21 +159,21 @@
   }
   
   .nav-link {
-    padding: var(--space-md);
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
   }
   
   .nav-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-md);
+    gap: 1rem;
     margin-top: auto;
-    padding-top: var(--space-md);
+    padding-top: 1rem;
     border-top: 1px solid var(--border-color);
   }
   
   .user-info {
-    padding: var(--space-sm) 0;
+    padding: 0.5rem 0;
   }
   
   .user-name {
