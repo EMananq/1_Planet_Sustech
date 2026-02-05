@@ -1,17 +1,20 @@
+/* ============================================
+   NAVBAR - Professional Clean
+   ============================================ */
+
 .navbar {
-  background: white;
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
 }
 
 .navbar-container {
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
-  height: 70px;
+  padding: 0 var(--space-6);
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,99 +23,101 @@
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   text-decoration: none;
-  color: var(--text-primary);
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  font-size: 1.25rem;
 }
 
 .logo-text {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
 }
 
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 .nav-links {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-1);
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-radius: var(--border-radius);
-  transition: all var(--transition-fast);
+  gap: var(--space-2);
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
   font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
 }
 
 .nav-link:hover {
   color: var(--text-primary);
-  background: var(--bg-card-hover);
+  background: var(--gray-100);
 }
 
 .nav-link.active {
-  color: var(--primary);
-  background: rgba(22, 163, 74, 0.1);
+  color: var(--primary-700);
+  background: var(--primary-50);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-4);
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .user-avatar {
-  width: 36px;
-  height: 36px;
-  background: var(--primary);
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  font-size: 0.75rem;
   color: white;
-  font-size: 0.9rem;
 }
 
 .user-name {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  max-width: 150px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 140px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .btn-logout {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .mobile-menu-btn {
@@ -121,12 +126,12 @@
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var(--space-2);
 }
 
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0 1rem;
+    padding: 0 var(--space-4);
   }
   
   .mobile-menu-btn {
@@ -137,17 +142,18 @@
   
   .navbar-menu {
     position: fixed;
-    top: 70px;
+    top: 64px;
     left: 0;
     right: 0;
     bottom: 0;
-    background: white;
+    background: var(--bg-primary);
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: var(--space-4);
+    padding: var(--space-4);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    border-top: 1px solid var(--border-color);
   }
   
   .navbar-menu.open {
@@ -159,30 +165,21 @@
   }
   
   .nav-link {
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: var(--space-3) var(--space-4);
+    font-size: 1rem;
   }
   
   .nav-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: var(--space-4);
     border-top: 1px solid var(--border-color);
-  }
-  
-  .user-info {
-    padding: 0.5rem 0;
-  }
-  
-  .user-name {
-    max-width: 100%;
   }
   
   .btn-logout {
     width: 100%;
     justify-content: center;
-    padding: 0.875rem;
+    padding: 0.75rem;
   }
 }

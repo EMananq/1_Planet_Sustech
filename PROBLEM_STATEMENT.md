@@ -1,28 +1,31 @@
 # Problem Statement
 
-So basically, most people have zero clue how much carbon they're actually producing. You drive to work, grab a burger, leave the AC running - but what does that even mean for the environment?
+## Background
 
-I wanted to build something that just shows you the numbers without making you feel bad about it.
+Most individuals lack visibility into their daily carbon emissions. Everyday activities like commuting, food choices, and energy consumption contribute to environmental impact, but there's no simple way for people to track and understand this data.
 
-## The idea
+## Solution
 
-Track your daily stuff (commute, meals, electricity) and see actual CO2 numbers. Not vague percentages - real kg of carbon dioxide.
+I built a web application that allows users to log their daily activities and visualize their carbon footprint with actual CO2 numbers. The app calculates emissions using established scientific formulas and presents the data through an intuitive dashboard.
 
-Plus theres an AI chatbot that looks at your data and gives tips that actually make sense for YOU. Like if you drive a lot, it won't tell you to "take public transport" if theres none in your area - itll suggest carpooling or WFH options.
+## Key Features
 
-## Tech stack
+**Activity Tracking** - Users can log activities across four categories: transportation, food consumption, energy usage, and waste. Each entry is converted to kg of CO2 using verified emission factors.
 
-- Frontend: React + Vite
-- Backend: Node/Express
-- Database: Firebase Firestore
-- Auth: Firebase Auth
-- AI: Google Gemini API
+**Visual Dashboard** - The dashboard displays total emissions, category breakdowns via pie charts, and trend analysis over time. This helps users identify which areas of their lifestyle have the highest environmental impact.
 
-## Features
+**AI-Powered Recommendations** - The application integrates with Google's Gemini API to analyze user-specific emission patterns and provide personalized reduction suggestions. Unlike generic advice, these recommendations are based on the user's actual logged data.
 
-1. Log activities by category (transport, food, energy, waste)
-2. Dashboard with charts showing emissions over time
-3. AI recommendations personalized to your usage
-4. Chat assistant for questions
+**Interactive Chat Assistant** - Users can ask questions about reducing their carbon footprint and receive contextual answers that reference their personal emission data.
 
-Thats pretty much it. Simple tracker with smart suggestions.
+## Technical Implementation
+
+- **Frontend:** React with Vite for fast development
+- **Backend:** Node.js with Express for API handling
+- **Database:** Firebase Firestore for real-time data storage
+- **Authentication:** JWT-based authentication with secure password hashing
+- **AI Integration:** Google Gemini 2.5 Flash API for personalized insights
+
+## Target Users
+
+Environmentally-conscious individuals who want to understand and reduce their personal carbon footprint without spending significant time on research or complex calculations.

@@ -1,91 +1,62 @@
+/* ============================================
+   DASHBOARD - Professional Clean
+   ============================================ */
+
 .dashboard {
-  padding: 2rem;
-  max-width: 1400px;
+  padding: var(--space-6);
+  max-width: 1280px;
   margin: 0 auto;
-  animation: fadeIn 0.5s ease;
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-6);
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 /* Stats Grid */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .stat-unit {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-secondary);
-  margin-left: 0.25rem;
+  color: var(--text-muted);
+  margin-left: var(--space-1);
 }
 
 /* Dashboard Tabs */
 .dashboard-tabs {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0;
-  overflow-x: auto;
-  background: white;
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
+  gap: var(--space-1);
+  margin-bottom: var(--space-5);
+  padding: var(--space-1);
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+  width: fit-content;
 }
 
 .dashboard-tabs .tab {
-  padding: 0.75rem 1.5rem;
-  white-space: nowrap;
-  border-radius: var(--border-radius);
-}
-
-.dashboard-tabs .tab.active {
-  background: rgba(22, 163, 74, 0.1);
+  padding: 0.5rem 1rem;
 }
 
 /* Overview Grid */
 .overview-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-5);
 }
 
-.chart-card {
-  min-height: 400px;
-  background: white;
-}
-
-.chart-legend {
-  display: flex;
-  gap: 1rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
+.chart-card,
 .breakdown-card {
-  min-height: 400px;
-  background: white;
+  min-height: 380px;
 }
 
 /* Responsive */
@@ -103,11 +74,12 @@
 
 @media (max-width: 640px) {
   .dashboard {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .dashboard-header {
     flex-direction: column;
+    align-items: stretch;
   }
   
   .dashboard-header .btn {
@@ -119,11 +91,11 @@
   }
   
   .dashboard-tabs {
-    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
   }
   
   .dashboard-tabs .tab {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    white-space: nowrap;
   }
 }
