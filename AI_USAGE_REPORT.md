@@ -1,43 +1,43 @@
-# AI Usage Report: Carbon Footprint Calculator
+# AI Usage Report
 
-## Overview
+## How I'm Using AI in This Project
 
-The Carbon Footprint Calculator leverages Artificial Intelligence (AI) to transform raw user data into personalized, actionable environmental advice. This report documents the integration of **Google Gemini API** to power the recommendation engine and intelligent chatbot features.
+### 1. Personalized Recommendations
 
-## AI Tools Used
+The main AI feature is the recommendations system. When you log activities, the app sends your emission data to Google's Gemini API and asks for personalized tips.
 
-- **Model**: Google Gemini Pro / Gemini 1.5 Flash
-- **Integration Method**: REST API via `Google Generative Language API`
-- **Library**: `axios` for HTTP requests (Node.js backend)
+**How it works:**
 
-## Features Powered by AI
+- User logs activities (driving, food, energy, etc.)
+- Backend calculates total emissions by category
+- This data goes to Gemini with a prompt asking for specific advice
+- AI analyzes the user's patterns and suggests realistic changes
 
-### 1. Personalized Recommendations Engine
+Example: If someone drives 40km daily, the AI might suggest carpooling or working from home 1 day/week - not just generic "drive less" advice.
 
-- **Functionality**: Analyzes the user's aggregated emission data (last 30 days) to identify the largest contributors to their carbon footprint.
-- **Implementation**:
-  - The backend aggregates emissions by category (Transport, Energy, Food, etc.).
-  - A structured prompt is sent to Gemini containing this JSON data.
-  - Gemini identifies "hotspots" and generates 3 specific, high-impact reduction tips.
-- **Prompt Engineering**:
-  > "You are an expert environmental consultant. Analyze this carbon footprint data... Provide: 1. Top 3 areas for improvement... 2. Specific actionable tips... 3. Estimated CO2 savings."
+### 2. Chat Assistant
 
-### 2. Interactive Environmental Chatbot
+There's also a chat feature where users can ask questions about reducing their footprint. The AI has context about the user's emission data so it can give relevant answers.
 
-- **Functionality**: Allows users to ask free-form questions about sustainability and their specific emission data.
-- **Implementation**:
-  - User messages are augmented with their recent emission stats as context.
-  - The AI acts as a "friendly and knowledgeable carbon footprint assistant."
-- **Prompt Engineering**:
-  > "You are a friendly and knowledgeable carbon footprint assistant... User's emission context: [JSON data]... User message: [Message]"
+Like if you ask "how can I reduce my food emissions?" it knows if you eat a lot of beef and can suggest alternatives.
 
-## Benefits of AI Integration
+### 3. Fallback System
 
-1.  **Personalization**: unlike static tips, the AI adapts to the user's actual behavior (e.g., suggesting public transport to a user with high car emissions, but meat reduction to a user with high food emissions).
-2.  **Engagement**: The chatbot provides an interactive way to learn, increasing user retention.
-3.  **Scalability**: The system can analyze complex data patterns and provide expert-level advice without human intervention.
+If the AI API is down or rate-limited, the app doesn't break. It falls back to rule-based recommendations that still work based on the user's data - just not as personalized.
 
-## Ethical Considerations & Accuracy
+## Technical Details
 
-- **Transparency**: All AI-generated advice is labeled as such in the UI.
-- **Fallback Mechanism**: A robust rule-based system provides standard recommendations if the AI service fails or is unreachable, ensuring continuous app functionality.
+- **API:** Google Gemini 2.5 Flash
+- **Integration:** Backend calls Gemini API, frontend just displays results
+- **Rate limiting:** Using free tier, so there are limits on requests/minute
+
+## What AI Does NOT Do
+
+- It doesn't auto-log activities (user has to input)
+- It doesn't access external data about the user
+- It can't make changes to user accounts
+- Chat history isn't stored - each conversation is fresh
+
+## Why Gemini?
+
+Tried a few options. Gemini's free tier is generous and the responses are pretty good for this use case. Plus it's easy to integrate with just REST API calls.

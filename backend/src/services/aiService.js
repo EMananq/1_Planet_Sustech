@@ -66,8 +66,9 @@ Be encouraging, specific, and practical. Format your response clearly with secti
     } else {
       return generateFallbackRecommendations(emissionData);
     }
-  } catch (error) {
-    // Silently fall back to rule-based recommendations
+   } catch (error) {
+    // Log the actual error for debugging
+    console.log('Recommendations API error:', error.response?.data?.error?.message || error.message);
     return generateFallbackRecommendations(emissionData);
   }
 }
