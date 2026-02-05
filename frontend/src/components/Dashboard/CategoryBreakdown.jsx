@@ -138,11 +138,11 @@ const CategoryBreakdown = ({ data }) => {
         }
         
         .pie-tooltip {
-          background: #faf8f3;
-          border: 1px solid #d7ccc8;
+          background: white;
+          border: 1px solid #e2e8f0;
           border-radius: 8px;
           padding: 0.75rem 1rem;
-          box-shadow: 0 4px 12px rgba(93, 64, 55, 0.15);
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
         
         .pie-tooltip .tooltip-name {

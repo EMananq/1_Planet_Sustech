@@ -25,7 +25,7 @@
 .stat-unit {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #5d4037;
+  color: var(--text-secondary);
   margin-left: 0.25rem;
 }
 
@@ -34,29 +34,22 @@
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #d7ccc8;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0;
   overflow-x: auto;
-  background: #faf8f3;
+  background: white;
   padding: 0.5rem;
-  border-radius: 12px;
-  border: 1px solid #d7ccc8;
+  border-radius: var(--border-radius);
 }
 
 .dashboard-tabs .tab {
   padding: 0.75rem 1.5rem;
   white-space: nowrap;
-  border-radius: 8px;
-  color: #5d4037;
+  border-radius: var(--border-radius);
 }
 
 .dashboard-tabs .tab.active {
-  background: rgba(45, 90, 39, 0.15);
-  color: #2d5a27;
-}
-
-.dashboard-tabs .tab:hover {
-  background: rgba(93, 64, 55, 0.1);
+  background: rgba(22, 163, 74, 0.1);
 }
 
 /* Overview Grid */
@@ -68,10 +61,7 @@
 
 .chart-card {
   min-height: 400px;
-  background: #faf8f3;
-  border: 1px solid #d7ccc8;
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: white;
 }
 
 .chart-legend {
@@ -84,7 +74,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: #5d4037;
+  color: var(--text-secondary);
 }
 
 .legend-dot {
@@ -95,10 +85,7 @@
 
 .breakdown-card {
   min-height: 400px;
-  background: #faf8f3;
-  border: 1px solid #d7ccc8;
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: white;
 }
 
 /* Responsive */
