@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { activityApi } from '../../services/api';
-import { Car, Zap, Utensils, Bike, Bus, Train, Beef, Salad, Lightbulb, Tv, Shirt, Check } from 'lucide-react';
+import { Car, Zap, Utensils, Coffee, Bike, Bus, Train, Beef, Salad, Lightbulb, Tv, Shirt, Check } from 'lucide-react';
 
 const QuickAdd = ({ onSuccess }) => {
   const [loading, setLoading] = useState(null);
@@ -13,17 +13,17 @@ const QuickAdd = ({ onSuccess }) => {
     { id: 'train_trip', label: 'Train Trip', icon: Train, category: 'transport', activityType: 'train', value: 25, unit: 'km', color: '#6b8e23' },
     { id: 'bike_ride', label: 'Bike Ride', icon: Bike, category: 'transport', activityType: 'bicycle', value: 5, unit: 'km', color: '#6b8e23' },
     
-    // Food (using valid backend types)
-    { id: 'beef_meal', label: 'Beef Meal', icon: Beef, category: 'food', activityType: 'beef', value: 1, unit: 'meal', color: '#c62828' },
-    { id: 'veg_meal', label: 'Veg Meal', icon: Salad, category: 'food', activityType: 'vegetarian', value: 1, unit: 'meal', color: '#c62828' },
-    { id: 'chicken_meal', label: 'Chicken Meal', icon: Utensils, category: 'food', activityType: 'chicken', value: 1, unit: 'meal', color: '#c62828' },
+    // Food
+    { id: 'beef_meal', label: 'Beef Meal', icon: Beef, category: 'food', activityType: 'beef', value: 1, unit: 'meals', color: '#c62828' },
+    { id: 'veg_meal', label: 'Veg Meal', icon: Salad, category: 'food', activityType: 'vegetarian', value: 1, unit: 'meals', color: '#c62828' },
+    { id: 'coffee', label: 'Coffee', icon: Coffee, category: 'food', activityType: 'coffee', value: 2, unit: 'cups', color: '#c62828' },
     
     // Energy
     { id: 'lights', label: '4hr Lights', icon: Lightbulb, category: 'energy', activityType: 'electricity', value: 0.4, unit: 'kWh', color: '#d4a017' },
     { id: 'tv_time', label: '2hr TV', icon: Tv, category: 'energy', activityType: 'electricity', value: 0.3, unit: 'kWh', color: '#d4a017' },
     
     // Shopping
-    { id: 'new_clothes', label: 'New Clothes', icon: Shirt, category: 'consumption', activityType: 'clothing', value: 1, unit: 'item', color: '#8b4513' },
+    { id: 'new_clothes', label: 'New Clothes', icon: Shirt, category: 'consumption', activityType: 'clothing', value: 1, unit: 'items', color: '#8b4513' },
   ];
 
   const handleQuickAdd = async (action) => {
