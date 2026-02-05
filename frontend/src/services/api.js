@@ -42,7 +42,7 @@ export const activityApi = {
   create: (data) => api.post('/activities', data),
   update: (id, data) => api.put(`/activities/${id}`, data),
   delete: (id) => api.delete(`/activities/${id}`),
-  getSummary: (period) => api.get('/activities/summary', { params: { period } }),
+  getSummary: (period, previous = false) => api.get('/activities/summary', { params: { period, previous } }),
   getTrends: (days) => api.get('/activities/trends', { params: { days } })
 };
 
