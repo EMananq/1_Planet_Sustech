@@ -210,10 +210,30 @@ User message: ${message}`;
       };
     }
   } catch (error) {
-    // Return helpful fallback response
+    // Log the error for debugging
+    console.log('Gemini API error:', error.response?.data?.error?.message || error.message);
+    
+    // Generate contextual fallback response based on user message
+    const lowerMessage = message.toLowerCase();
+    let fallbackResponse = "";
+    
+    if (lowerMessage.includes('transport') || lowerMessage.includes('car') || lowerMessage.includes('drive')) {
+      fallbackResponse = "Great question about transportation! 🚗 Here are some tips: Try carpooling to cut emissions by 50%. For trips under 5km, walk or bike. If buying a new car, consider electric or hybrid. Public transit produces 10x less CO2 per passenger than driving alone.";
+    } else if (lowerMessage.includes('energy') || lowerMessage.includes('electric') || lowerMessage.includes('power')) {
+      fallbackResponse = "Let's talk about energy savings! 💡 Switch to LED bulbs (use 75% less energy). Unplug devices when not in use - phantom power accounts for 10% of home energy. Consider a smart thermostat to reduce heating/cooling by 10-15%. Air dry clothes instead of using the dryer when possible.";
+    } else if (lowerMessage.includes('food') || lowerMessage.includes('diet') || lowerMessage.includes('eat') || lowerMessage.includes('meat')) {
+      fallbackResponse = "Food choices matter for the planet! 🥗 Beef has the highest carbon footprint - 6kg CO2 per meal. Trying 'Meatless Mondays' can reduce your food emissions by 15%. Buy local and seasonal produce when possible. Reducing food waste is also huge - plan meals and compost scraps.";
+    } else if (lowerMessage.includes('tips') || lowerMessage.includes('reduce') || lowerMessage.includes('help')) {
+      fallbackResponse = "Here are my top carbon reduction tips! 🌱 1) Walk or bike for short trips (saves 0.5-2 kg CO2 per trip). 2) Switch to LED bulbs throughout your home. 3) Eat more plant-based meals - even 2-3 per week helps! 4) Reduce, reuse, recycle in that order. 5) Unplug electronics when not in use.";
+    } else if (lowerMessage.includes('calculate') || lowerMessage.includes('footprint') || lowerMessage.includes('average')) {
+      fallbackResponse = "The average person's carbon footprint is about 4-8 tonnes CO2 per year. 📊 In developed countries, it can be 12-16 tonnes! Transportation typically accounts for 30%, home energy 20%, food 15%, and goods/services 35%. Log your activities here to track your personal impact!";
+    } else {
+      fallbackResponse = "I'm here to help you reduce your carbon footprint! 🌍 Try asking me about: transportation tips, saving energy at home, food choices and their impact, or general ways to reduce your emissions. What area would you like to focus on?";
+    }
+    
     return {
       success: true,
-      response: "I can help you reduce your carbon footprint! Here are some quick tips: Walk or bike for short trips, switch to LED bulbs, eat more plant-based meals, and reduce single-use plastics. Would you like more specific advice?",
+      response: fallbackResponse,
       source: 'fallback'
     };
   }
