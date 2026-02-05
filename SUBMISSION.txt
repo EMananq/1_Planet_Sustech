@@ -1,8 +1,8 @@
 Submission for Carbon Footprint Calculator & Tracker
 
-Name: [Your Name]
+Name: Manan Lakhotia
 Repository Link: https://github.com/EMananq/1_Planet_Sustech
-Video Demo: [Link to Video Demo]
+Video Demo: https://www.youtube.com/watch?v=hI_BwuycFaM
 
 Description:
 A full-stack web application (React + Node.js + Firebase) that tracks carbon emissions and uses Google Gemini AI to provide personalized reduction tips.
