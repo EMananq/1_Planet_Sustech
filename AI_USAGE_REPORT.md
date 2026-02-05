@@ -1,43 +1,36 @@
 # AI Usage Report
 
-## How I'm Using AI in This Project
+## What AI does in this app
 
-### 1. Personalized Recommendations
+Two main things:
 
-The main AI feature is the recommendations system. When you log activities, the app sends your emission data to Google's Gemini API and asks for personalized tips.
+**1. Recommendations** - When you open the AI tab, it grabs your emission data from the last 30 days and sends it to Gemini. The API analyzes whats high (like if transport is 70% of your footprint) and gives specific tips. Not generic stuff.
 
-**How it works:**
+**2. Chat** - You can ask questions like "how do i reduce food emissions" and itll answer based on YOUR data. So if youve been logging lots of beef meals, itll tell you about that specifically.
 
-- User logs activities (driving, food, energy, etc.)
-- Backend calculates total emissions by category
-- This data goes to Gemini with a prompt asking for specific advice
-- AI analyzes the user's patterns and suggests realistic changes
+## How its implemented
 
-Example: If someone drives 40km daily, the AI might suggest carpooling or working from home 1 day/week - not just generic "drive less" advice.
+Backend makes POST requests to Gemini 2.5 Flash API. I'm using the free tier so theres rate limits but it works fine for demo purposes.
 
-### 2. Chat Assistant
+The prompt includes the users emission breakdown:
 
-There's also a chat feature where users can ask questions about reducing their footprint. The AI has context about the user's emission data so it can give relevant answers.
+```
+total: 45.2 kg CO2
+transport: 28 kg
+food: 12 kg
+energy: 5.2 kg
+```
 
-Like if you ask "how can I reduce my food emissions?" it knows if you eat a lot of beef and can suggest alternatives.
+Then asks for personalized suggestions.
 
-### 3. Fallback System
+## Fallback
 
-If the AI API is down or rate-limited, the app doesn't break. It falls back to rule-based recommendations that still work based on the user's data - just not as personalized.
+If API is down or quota exceeded, the app doesnt crash. Theres rule-based recommendations that kick in - not as smart but better than nothing.
 
-## Technical Details
+## Limitations
 
-- **API:** Google Gemini 2.5 Flash
-- **Integration:** Backend calls Gemini API, frontend just displays results
-- **Rate limiting:** Using free tier, so there are limits on requests/minute
+- Free tier = limited requests per minute
+- No memory between chat sessions
+- Recommendations refresh on each page load
 
-## What AI Does NOT Do
-
-- It doesn't auto-log activities (user has to input)
-- It doesn't access external data about the user
-- It can't make changes to user accounts
-- Chat history isn't stored - each conversation is fresh
-
-## Why Gemini?
-
-Tried a few options. Gemini's free tier is generous and the responses are pretty good for this use case. Plus it's easy to integrate with just REST API calls.
+Thats about it for AI usage.

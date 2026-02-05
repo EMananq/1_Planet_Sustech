@@ -1,35 +1,28 @@
-# Carbon Footprint Calculator - Problem Statement
+# Problem Statement
 
-## What's the Problem?
+So basically, most people have zero clue how much carbon they're actually producing. You drive to work, grab a burger, leave the AC running - but what does that even mean for the environment?
 
-Most people have no idea how much carbon they produce daily. We drive to work, eat meat, use electricity - but how does that actually impact the environment? There's no easy way to track this stuff.
+I wanted to build something that just shows you the numbers without making you feel bad about it.
 
-I wanted to build something that makes it simple to see your environmental impact without being preachy or complicated.
+## The idea
 
-## My Solution
+Track your daily stuff (commute, meals, electricity) and see actual CO2 numbers. Not vague percentages - real kg of carbon dioxide.
 
-A web app where you can log your daily activities (driving, eating, energy use) and actually SEE the carbon footprint in real numbers. Not just "reduce your emissions" - actual kg of CO2.
+Plus theres an AI chatbot that looks at your data and gives tips that actually make sense for YOU. Like if you drive a lot, it won't tell you to "take public transport" if theres none in your area - itll suggest carpooling or WFH options.
 
-### What it does:
+## Tech stack
 
-- **Track activities** - Log your commute, meals, electricity usage
-- **See the numbers** - Dashboard shows total emissions with charts
-- **Get tips** - AI gives you personalized suggestions based on YOUR data
-- **Chat with AI** - Ask questions about reducing your footprint
+- Frontend: React + Vite
+- Backend: Node/Express
+- Database: Firebase Firestore
+- Auth: Firebase Auth
+- AI: Google Gemini API
 
-## Why I Built This
+## Features
 
-Climate change is real but most apps either guilt-trip you or are way too complicated. I wanted something that just shows you the facts and helps you make small changes.
+1. Log activities by category (transport, food, energy, waste)
+2. Dashboard with charts showing emissions over time
+3. AI recommendations personalized to your usage
+4. Chat assistant for questions
 
-The AI part is cool because it doesn't give generic advice - it looks at what YOU actually do and suggests realistic changes.
-
-## Tech Used
-
-- React frontend (Vite)
-- Node.js/Express backend
-- Firebase for auth & database
-- Google Gemini AI for recommendations
-
-## Who's It For?
-
-Anyone who's curious about their carbon footprint but doesn't want to spend hours researching. Just log what you do, see the impact, get some tips.
+Thats pretty much it. Simple tracker with smart suggestions.
