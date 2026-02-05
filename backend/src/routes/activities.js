@@ -152,40 +152,27 @@ router.get('/', async (req, res) => {
 router.get('/summary', async (req, res) => {
   try {
     const userId = req.user.userId;
-    const { period = 'month', previous = 'false' } = req.query;
-    const isPrevious = previous === 'true';
+    const { period = 'month' } = req.query;
     
     // Calculate date ranges
     const now = new Date();
-    let startDate, endDate;
+    let startDate;
     
-    // Calculate period length in milliseconds
-    let periodLength;
     switch (period) {
       case 'day':
-        periodLength = 24 * 60 * 60 * 1000;
+        startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         break;
       case 'week':
-        periodLength = 7 * 24 * 60 * 60 * 1000;
+        startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
         break;
       case 'month':
-        periodLength = 30 * 24 * 60 * 60 * 1000;
+        startDate = new Date(now.getFullYear(), now.getMonth(), 1);
         break;
       case 'year':
-        periodLength = 365 * 24 * 60 * 60 * 1000;
+        startDate = new Date(now.getFullYear(), 0, 1);
         break;
       default:
-        periodLength = 30 * 24 * 60 * 60 * 1000;
-    }
-    
-    if (isPrevious) {
-      // Previous period: from (now - 2*periodLength) to (now - periodLength)
-      endDate = new Date(now.getTime() - periodLength);
-      startDate = new Date(now.getTime() - 2 * periodLength);
-    } else {
-      // Current period: from (now - periodLength) to now
-      endDate = now;
-      startDate = new Date(now.getTime() - periodLength);
+        startDate = new Date(now.getFullYear(), now.getMonth(), 1);
     }
     
     // Simple query - filter in JS to avoid index requirements
@@ -198,7 +185,7 @@ router.get('/summary', async (req, res) => {
     snapshot.forEach(doc => {
       const data = doc.data();
       const dateValue = data.date?.toDate?.() || new Date(data.date);
-      if (dateValue >= startDate && dateValue <= endDate) {
+      if (dateValue >= startDate) {
         activities.push(data);
       }
     });
@@ -207,9 +194,8 @@ router.get('/summary', async (req, res) => {
     
     res.json({
       period,
-      isPrevious,
       startDate: startDate.toISOString(),
-      endDate: endDate.toISOString(),
+      endDate: now.toISOString(),
       activityCount: activities.length,
       ...summary
     });

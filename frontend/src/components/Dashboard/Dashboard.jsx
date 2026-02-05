@@ -9,14 +9,12 @@ import EmissionChart from './EmissionChart';
 import CategoryBreakdown from './CategoryBreakdown';
 import ActivityList from '../Activities/ActivityList';
 import ActivityForm from '../Activities/ActivityForm';
-import QuickAdd from '../Activities/QuickAdd';
 import Recommendations from '../AI/Recommendations';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const { user } = useAuth();
   const [summary, setSummary] = useState(null);
-  const [previousSummary, setPreviousSummary] = useState(null);
   const [trends, setTrends] = useState([]);
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,15 +28,13 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [summaryRes, prevSummaryRes, trendsRes, activitiesRes] = await Promise.all([
+      const [summaryRes, trendsRes, activitiesRes] = await Promise.all([
         activityApi.getSummary('month'),
-        activityApi.getSummary('month', true), // Previous period
         activityApi.getTrends(30),
         activityApi.getAll({ limit: 10 })
       ]);
       
       setSummary(summaryRes.data);
-      setPreviousSummary(prevSummaryRes.data);
       setTrends(trendsRes.data);
       setActivities(activitiesRes.data);
     } catch (error) {
@@ -61,15 +57,6 @@ const Dashboard = () => {
       waste: Trash2
     };
     return icons[category] || Leaf;
-  };
-
-  // Calculate percentage change from previous period
-  const getPercentChange = () => {
-    if (!summary?.total || !previousSummary?.total) return null;
-    const current = summary.total;
-    const previous = previousSummary.total;
-    if (previous === 0) return current > 0 ? 100 : 0;
-    return (((current - previous) / previous) * 100).toFixed(1);
   };
 
   if (loading) {
@@ -112,17 +99,10 @@ const Dashboard = () => {
               <span className="stat-unit">kg</span>
             </div>
             <div className="stat-label">CO₂ This Month</div>
-            {getPercentChange() !== null && (
-              <div className={`stat-change ${parseFloat(getPercentChange()) <= 0 ? 'positive' : 'negative'}`}>
-                {parseFloat(getPercentChange()) <= 0 ? <TrendingDown size={14} /> : <TrendingUp size={14} />}
-                <span>{Math.abs(getPercentChange())}% vs last month</span>
-              </div>
-            )}
-            {getPercentChange() === null && (
-              <div className="stat-change neutral">
-                <span>Log activities to compare</span>
-              </div>
-            )}
+            <div className={`stat-change ${summary?.total > 0 ? 'negative' : 'positive'}`}>
+              <TrendingDown size={14} />
+              <span>Track to reduce</span>
+            </div>
           </div>
         </div>
 
@@ -165,9 +145,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-
-      {/* Quick Add Buttons */}
-      <QuickAdd onSuccess={fetchData} />
 
       {/* Tabs */}
       <div className="dashboard-tabs">
